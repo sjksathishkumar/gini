@@ -18,6 +18,12 @@ return [
             'identityClass' => 'app\models\Admin',
             'enableAutoLogin' => true,
         ],
+        'CommonFunctions' => [
+            'class' => 'backend\components\CommonFunctions'
+        ],
+        'UtilityHtml' => [
+            'class' => 'backend\components\UtilityHtml'
+        ],
         
         'thumbnail' => [
         'class' => 'yii\thumbnail\EasyThumbnail',

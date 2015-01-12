@@ -7,84 +7,37 @@ use yii\grid\GridView;
 /* @var $searchModel backend\models\CmsSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'CMS';
+$this->title = 'Cms';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="page-header">
-    <div class="pull-left">
-        <h1><?= Html::encode($this->title) ?></h1>
-    </div>
-</div>
-<div class="breadcrumbs">
-<ul>
-        <li><?php echo Html::a('Home',['/dashboard']); ?> / <?= Html::encode($this->title) ?></li>
-</ul>
-<div class="close-bread"><a href="#"><i class="icon-remove"></i></a></div>
-</div>
-<div class="grid box">
-<div class="row-fluid">
-	<div class="span12">
-		<div class="box box-color box-bordered">
-			<div class="box-title">
-				<h3><i class="icon-table"></i>Manage CMS</h3>
-			</div>
-			<div class="box-content nopadding">
-				<form action="" name='cms-grid-list-form' id='cms-grid-list-form'>
-                                    <?= GridView::widget([
-                                        'id'=>'cms-grid',
-					'itemsCssClass' => 'table table-hover table-nomargin table-bordered', 
-                                        'dataProvider' => $dataProvider,
-                                        'filterModel' => $searchModel,
-                                        'columns' => [
-                                            ['class' => 'yii\grid\SerialColumn'],
+<div class="cms-index">
 
-                                            //'pkCmsID',
-                                            //'cmsDisplayTitle',
-                                            array(
-                                                'name'=>'cmsPageTitle',
-                                                'htmlOptions'=>array('style'=>'text-align:center'),
-                                                ),
-                                            array(
-                                                'name'=>'cmsDateModified',
-                                                'htmlOptions'=>array('style'=>'text-align:center'),
-                                                ),
-                                            //'cmsPageTitle',
-                                            //'cmsSlug',
-                                            //'cmsContent:ntext',
-                                            // 'cmsMetaTitle',
-                                            // 'cmsMetaKeywords:ntext',
-                                            // 'cmsMetaDescription:ntext',
-                                            // 'cmsContentAvailable',
-                                            // 'cmsBannerAvailable',
-                                            // 'cmsIsPage',
-                                            // 'cmsStatus',
-                                            // 'cmsDateAdded',
-                                             //'cmsDateModified',
-
-                                            ['class' => 'yii\grid\ActionColumn'],
-                                        ],
-                                    ]); ?>
-            			</form>
-			</div>
-		</div>
-	</div>
-</div>
-
-    
+    <h1><?= Html::encode($this->title) ?></h1>
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
-    <div>
-        <?= Html::a('Create Cms', ['create'], ['class' => 'btn btn-success']) ?>
-    </div>
 
+    <p>
+        <?= Html::a('Create Cms', ['create'], ['class' => 'btn btn-success']) ?>
+    </p>
+  
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
-
-            //'pkCmsID',
+            [
+                'class' => 'yii\grid\SerialColumn',
+                'header' => 'S.No',
+                'headerOptions' => array('style'=>'text-align:center')
+            ],
+            [
+                'class' => 'yii\grid\DataColumn', // can be omitted, as it is the default
+                'value' => function ($data) {
+                    return $data->cmsDisplayTitle; // $data['name'] for array data, e.g. using SqlDataProvider.
+                },
+                'label' => 'Title',
+                'headerOptions' => array('style'=>'text-align:center')
+            ],
             //'cmsDisplayTitle',
-            'cmsPageTitle',
+            //'cmsPageTitle',
             //'cmsSlug',
             //'cmsContent:ntext',
             // 'cmsMetaTitle',
@@ -93,12 +46,114 @@ $this->params['breadcrumbs'][] = $this->title;
             // 'cmsContentAvailable',
             // 'cmsBannerAvailable',
             // 'cmsIsPage',
-            // 'cmsStatus',
+            [
+                'class' => 'yii\grid\DataColumn', // can be omitted, as it is the default
+                'value' => function ($data) {
+                    return $data->cmsDateModified; // $data['name'] for array data, e.g. using SqlDataProvider.
+                },
+                'label' => 'Date Modified',
+                'headerOptions' => array('style'=>'text-align:center'),
+                'contentOptions'  => array('style'=>'text-align:center')
+            ],
+            [
+                'class' => 'yii\grid\DataColumn', // can be omitted, as it is the default
+                'value' => function ($data) {
+                    return $data->cmsStatus; // $data['name'] for array data, e.g. using SqlDataProvider.
+                },
+                'label' => 'Status',
+                'headerOptions' => array('style'=>'text-align:center'),
+                'contentOptions'  => array('style'=>'text-align:center')
+            ],
+             //'cmsStatus',
             // 'cmsDateAdded',
-             'cmsDateModified',
+             //'cmsDateModified',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],
     ]); ?>
 
+</div>
+<div class="box box-color box-bordered">
+    <div class="search-form" style="display:none;">
+    <?php //$this->render('_search',['cmsDisplayTitle' => $searchModel->cmsDisplayTitle]); ?>
+    
+    </div><!-- search-form -->
+    <!-- End of Setting up flash success/error message -->
+</div>
+
+<div class="row-fluid">
+    <div class="span12">
+        <div class="box box-color box-bordered">
+            <div class="box-title">
+                <h3><i class="icon-table"></i>Manage CMS</h3>
+            </div>
+            <div class="box-content nopadding">
+                <form action="" name='cms-grid-list-form' id='cms-grid-list-form'>
+                    <?= GridView::widget([
+                        'dataProvider' => $dataProvider,
+                        //'filterModel' => $searchModel,
+                        'columns' => [
+                            [
+                                'class' => 'yii\grid\SerialColumn',
+                                'header' => 'S.No',
+                                'headerOptions' => array('style'=>'text-align:center')
+                            ],
+                            /*[
+                                'class' => 'yii\grid\DataColumn', // can be omitted, as it is the default
+                                'value' => function ($data) {
+                                    return $data->cmsPageTitle; // $data['name'] for array data, e.g. using SqlDataProvider.
+                                },
+                                'headerOptions' => array('style'=>'text-align:center')
+                            ],*/
+                            //'cmsDisplayTitle',
+                            'cmsPageTitle',
+                            //'cmsSlug',
+                            //'cmsContent:ntext',
+                            // 'cmsMetaTitle',
+                            // 'cmsMetaKeywords:ntext',
+                            // 'cmsMetaDescription:ntext',
+                            // 'cmsContentAvailable',
+                            // 'cmsBannerAvailable',
+                            // 'cmsIsPage',
+                            /*[
+                                'class' => 'yii\grid\DataColumn', // can be omitted, as it is the default
+                                'value' => function ($data) {
+                                    return $data->cmsDateModified; // $data['name'] for array data, e.g. using SqlDataProvider.
+                                },
+                                'label' => 'Date Modified',
+                                'headerOptions' => array('style'=>'text-align:center'),
+                                'contentOptions'  => array('style'=>'text-align:center')
+                            ],*/
+                            /*[
+                                'class' => 'yii\grid\DataColumn', // can be omitted, as it is the default
+                                'value' => function ($data) {
+                                    return $data->cmsStatus; // $data['name'] for array data, e.g. using SqlDataProvider.
+                                },
+                                'label' => 'Status',
+                                'headerOptions' => array('style'=>'text-align:center'),
+                                'contentOptions'  => array('style'=>'text-align:center')
+                            ],*/
+                             'cmsStatus',
+                            // 'cmsDateAdded',
+                                'cmsDateModified',
+
+                            ['class' => 'yii\grid\ActionColumn'],
+                        ],
+                    ]); ?>
+                    
+                </form>
+            </div>
+        </div>
+
+        <div class="box box-color box-bordered">
+            <div class="box-title">
+                <h3><i class="icon-table"></i>Manage Other Pages</h3>
+            </div>
+            <div class="box-content nopadding">
+                <form action="" name='cms-grid-list-form' id='cms-grid-list-form'>
+                    
+                </form>
+            </div>
+        </div>
+    </div>
 </div>

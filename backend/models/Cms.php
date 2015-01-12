@@ -53,7 +53,7 @@ class Cms extends \yii\db\ActiveRecord
         return [
             'pkCmsID' => 'Pk Cms ID',
             'cmsDisplayTitle' => 'Cms Display Title',
-            'cmsPageTitle' => 'Cms Page Title',
+            'cmsPageTitle' => 'Title',
             'cmsSlug' => 'Cms Slug',
             'cmsContent' => 'Cms Content',
             'cmsMetaTitle' => 'Cms Meta Title',
@@ -62,9 +62,9 @@ class Cms extends \yii\db\ActiveRecord
             'cmsContentAvailable' => '\'0\'=>No, \'1\'=>Yes',
             'cmsBannerAvailable' => '\'0\'=>No, \'1\'=>Yes',
             'cmsIsPage' => 'Cms Is Page',
-            'cmsStatus' => '0=Inactive | 1=Active',
+            'cmsStatus' => 'Status',
             'cmsDateAdded' => 'Cms Date Added',
-            'cmsDateModified' => 'Cms Date Modified',
+            'cmsDateModified' => 'Date Modified',
         ];
     }
 }
