@@ -5,14 +5,23 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model backend\models\Cms */
 
-$this->title = 'Update Cms: ' . ' ' . $model->pkCmsID;
-$this->params['breadcrumbs'][] = ['label' => 'Cms', 'url' => ['index']];
-$this->params['breadcrumbs'][] = ['label' => $model->pkCmsID, 'url' => ['view', 'id' => $model->pkCmsID]];
-$this->params['breadcrumbs'][] = 'Update';
+$this->title = 'Update CMS';
 ?>
-<div class="cms-update">
+<div class="page-header">
+	<div class="pull-left">
+		<h1>Update CMS Page</h1>
+	</div>
+</div>
+<div class="breadcrumbs">
+	<ul>
+		<li><?php echo Html::a('Home',['/site/index']); ?><i class="icon-angle-right"></i></li>
+		<li><?php echo Html::a('CMS',['/cms/index']); ?><i class="icon-angle-right"></i></li>
+		<li><a href="#">Udate CMS</a></li>
+	</ul>
+	<div class="close-bread"><a href="#"><i class="icon-remove"></i></a></div>
+</div>
 
-    <h1><?= Html::encode($this->title) ?></h1>
+<div class="cms-update">
 
     <?= $this->render('_form', [
         'model' => $model,

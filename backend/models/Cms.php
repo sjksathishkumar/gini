@@ -38,8 +38,8 @@ class Cms extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['cmsDisplayTitle', 'cmsPageTitle', 'cmsSlug', 'cmsContent', 'cmsMetaTitle', 'cmsMetaKeywords', 'cmsMetaDescription', 'cmsContentAvailable', 'cmsBannerAvailable', 'cmsIsPage', 'cmsStatus', 'cmsDateAdded'], 'required'],
-            [['cmsContent', 'cmsMetaKeywords', 'cmsMetaDescription', 'cmsContentAvailable', 'cmsBannerAvailable', 'cmsIsPage', 'cmsStatus'], 'string'],
+            [['cmsDisplayTitle', 'cmsPageTitle', 'cmsSlug', 'cmsContent', 'cmsMetaTitle', 'cmsMetaKeywords', 'cmsMetaDescription', 'cmsStatus'], 'required'],
+            [['cmsContent', 'cmsMetaKeywords', 'cmsMetaDescription', 'cmsStatus'], 'string'],
             [['cmsDateAdded', 'cmsDateModified'], 'safe'],
             [['cmsDisplayTitle', 'cmsPageTitle', 'cmsSlug', 'cmsMetaTitle'], 'string', 'max' => 255]
         ];
@@ -51,19 +51,15 @@ class Cms extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'pkCmsID' => 'Pk Cms ID',
-            'cmsDisplayTitle' => 'Cms Display Title',
+            'pkCmsID' => 'CMS ID',
+            'cmsDisplayTitle' => 'Display Title',
             'cmsPageTitle' => 'Title',
-            'cmsSlug' => 'Cms Slug',
-            'cmsContent' => 'Cms Content',
-            'cmsMetaTitle' => 'Cms Meta Title',
-            'cmsMetaKeywords' => 'Cms Meta Keywords',
-            'cmsMetaDescription' => 'Cms Meta Description',
-            'cmsContentAvailable' => '\'0\'=>No, \'1\'=>Yes',
-            'cmsBannerAvailable' => '\'0\'=>No, \'1\'=>Yes',
-            'cmsIsPage' => 'Cms Is Page',
+            'cmsSlug' => 'Slug',
+            'cmsContent' => 'Content',
+            'cmsMetaTitle' => 'Meta Title',
+            'cmsMetaKeywords' => 'Meta Keywords',
+            'cmsMetaDescription' => 'Meta Description',
             'cmsStatus' => 'Status',
-            'cmsDateAdded' => 'Cms Date Added',
             'cmsDateModified' => 'Date Modified',
         ];
     }

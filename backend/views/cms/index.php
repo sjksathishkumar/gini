@@ -7,71 +7,19 @@ use yii\grid\GridView;
 /* @var $searchModel backend\models\CmsSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Cms';
-$this->params['breadcrumbs'][] = $this->title;
+$this->title = 'Manage CMS';
 ?>
-<div class="cms-index">
-
-    <h1><?= Html::encode($this->title) ?></h1>
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
-
-    <p>
-        <?= Html::a('Create Cms', ['create'], ['class' => 'btn btn-success']) ?>
-    </p>
-  
-    <?= GridView::widget([
-        'dataProvider' => $dataProvider,
-        'filterModel' => $searchModel,
-        'columns' => [
-            [
-                'class' => 'yii\grid\SerialColumn',
-                'header' => 'S.No',
-                'headerOptions' => array('style'=>'text-align:center')
-            ],
-            [
-                'class' => 'yii\grid\DataColumn', // can be omitted, as it is the default
-                'value' => function ($data) {
-                    return $data->cmsDisplayTitle; // $data['name'] for array data, e.g. using SqlDataProvider.
-                },
-                'label' => 'Title',
-                'headerOptions' => array('style'=>'text-align:center')
-            ],
-            //'cmsDisplayTitle',
-            //'cmsPageTitle',
-            //'cmsSlug',
-            //'cmsContent:ntext',
-            // 'cmsMetaTitle',
-            // 'cmsMetaKeywords:ntext',
-            // 'cmsMetaDescription:ntext',
-            // 'cmsContentAvailable',
-            // 'cmsBannerAvailable',
-            // 'cmsIsPage',
-            [
-                'class' => 'yii\grid\DataColumn', // can be omitted, as it is the default
-                'value' => function ($data) {
-                    return $data->cmsDateModified; // $data['name'] for array data, e.g. using SqlDataProvider.
-                },
-                'label' => 'Date Modified',
-                'headerOptions' => array('style'=>'text-align:center'),
-                'contentOptions'  => array('style'=>'text-align:center')
-            ],
-            [
-                'class' => 'yii\grid\DataColumn', // can be omitted, as it is the default
-                'value' => function ($data) {
-                    return $data->cmsStatus; // $data['name'] for array data, e.g. using SqlDataProvider.
-                },
-                'label' => 'Status',
-                'headerOptions' => array('style'=>'text-align:center'),
-                'contentOptions'  => array('style'=>'text-align:center')
-            ],
-             //'cmsStatus',
-            // 'cmsDateAdded',
-             //'cmsDateModified',
-
-            ['class' => 'yii\grid\ActionColumn'],
-        ],
-    ]); ?>
-
+<div class="page-header">
+    <div class="pull-left">
+        <h1>Manage CMS</h1>
+    </div>
+</div>
+<div class="breadcrumbs">
+    <ul>
+        <li><?php echo Html::a('Home',['/site/index']); ?><i class="icon-angle-right"></i></li>
+        <li><?php echo Html::a('Manage CMS',['/cms/index']); ?></li>
+    </ul>
+    <div class="close-bread"><a href="#"><i class="icon-remove"></i></a></div>
 </div>
 <div class="box box-color box-bordered">
     <div class="search-form" style="display:none;">
@@ -140,17 +88,6 @@ $this->params['breadcrumbs'][] = $this->title;
                             ['class' => 'yii\grid\ActionColumn'],
                         ],
                     ]); ?>
-                    
-                </form>
-            </div>
-        </div>
-
-        <div class="box box-color box-bordered">
-            <div class="box-title">
-                <h3><i class="icon-table"></i>Manage Other Pages</h3>
-            </div>
-            <div class="box-content nopadding">
-                <form action="" name='cms-grid-list-form' id='cms-grid-list-form'>
                     
                 </form>
             </div>

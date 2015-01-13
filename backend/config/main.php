@@ -19,10 +19,10 @@ return [
             'enableAutoLogin' => true,
         ],
         'CommonFunctions' => [
-            'class' => 'backend\components\CommonFunctions'
+            'class' => 'backend\components\CommonFunctions',
         ],
         'UtilityHtml' => [
-            'class' => 'backend\components\UtilityHtml'
+            'class' => 'backend\components\UtilityHtml',
         ],
         
         'thumbnail' => [

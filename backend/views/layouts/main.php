@@ -104,10 +104,10 @@ AppAsset::register($this);
                         
 
                         <li <?php if (Yii::$app->controller->getUniqueId() == 'cms' || Yii::$app->controller->getUniqueId() == 'faq') echo 'class="active"'; ?>>
-                            <?php echo Html::a('<span>Protal Setup</span> <span class="caret"></span>', 'javascript:void(0);', ['data-toggle' => 'dropdown', 'class' => 'dropdown-toggle']); ?>
+                            <?php echo Html::a('<span>Settings</span> <span class="caret"></span>', 'javascript:void(0);', ['data-toggle' => 'dropdown', 'class' => 'dropdown-toggle']); ?>
                             <ul class="dropdown-menu">
                                 <li class='dropdown'>
-                                    <?php echo Html::a('Manage CMS', ['cms/index']); ?>
+                                    <?php echo Html::a('CMS', ['cms/index']); ?>
                                     
                                 </li>
                                 <li class='dropdown'>
@@ -135,7 +135,7 @@ AppAsset::register($this);
                         <div class="dropdown">
                             <a href="javascript:void(0);" class='dropdown-toggle' data-toggle="dropdown">
                                 <?php echo 'Welcome'; ?>
-                                <img src="<?php echo Yii::$app->getUrlManager()->getBaseUrl(); ?>/img/demo/admin.png" alt="">
+                                <img src="<?php echo Yii::$app->getUrlManager()->getBaseUrl(); ?>/img/demo/admin.png" alt="logo">
                             </a>
                             <ul class="dropdown-menu">
                                 

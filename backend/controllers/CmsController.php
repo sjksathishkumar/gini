@@ -9,6 +9,7 @@ use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
+
 /**
  * CmsController implements the CRUD actions for Cms model.
  */
@@ -48,6 +49,10 @@ class CmsController extends Controller
      */
     public function actionView($id)
     {
+        //Yii::$app->CommonFunctions->statusName($model->cmsStatus);
+        //echo "<pre>";
+        //print_r(\Yii::$app->CommonFunctions->statusName('1')); die();
+        //echo $this->cmsStatus; die();
         return $this->render('view', [
             'model' => $this->findModel($id),
         ]);
@@ -84,9 +89,16 @@ class CmsController extends Controller
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->pkCmsID]);
         } else {
-            return $this->render('update', [
-                'model' => $model,
-            ]);
+                if($model->save())
+                {
+                    Yii::$app->getSession()->setFlash('cmsUpdate');
+                    return $this->render('update', [
+                    'model' => $model
+                    ]);
+                }
+                else{
+                    return $this->redirect(['view', 'id' => $model->pkCmsID]);
+                }
         }
     }
 

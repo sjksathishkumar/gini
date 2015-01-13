@@ -19,7 +19,7 @@ class CmsSearch extends Cms
     {
         return [
             [['pkCmsID'], 'integer'],
-            [['cmsDisplayTitle', 'cmsPageTitle', 'cmsSlug', 'cmsContent', 'cmsMetaTitle', 'cmsMetaKeywords', 'cmsMetaDescription', 'cmsContentAvailable', 'cmsBannerAvailable', 'cmsIsPage', 'cmsStatus', 'cmsDateAdded', 'cmsDateModified'], 'safe'],
+            [['cmsDisplayTitle', 'cmsPageTitle', 'cmsSlug', 'cmsContent', 'cmsMetaTitle', 'cmsMetaKeywords', 'cmsMetaDescription', 'cmsStatus', 'cmsDateAdded', 'cmsDateModified'], 'safe'],
         ];
     }
 
@@ -64,9 +64,6 @@ class CmsSearch extends Cms
             ->andFilterWhere(['like', 'cmsMetaTitle', $this->cmsMetaTitle])
             ->andFilterWhere(['like', 'cmsMetaKeywords', $this->cmsMetaKeywords])
             ->andFilterWhere(['like', 'cmsMetaDescription', $this->cmsMetaDescription])
-            ->andFilterWhere(['like', 'cmsContentAvailable', $this->cmsContentAvailable])
-            ->andFilterWhere(['like', 'cmsBannerAvailable', $this->cmsBannerAvailable])
-            ->andFilterWhere(['like', 'cmsIsPage', $this->cmsIsPage])
             ->andFilterWhere(['like', 'cmsStatus', $this->cmsStatus]);
 
         return $dataProvider;
