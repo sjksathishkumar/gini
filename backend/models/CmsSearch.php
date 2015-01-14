@@ -45,6 +45,10 @@ class CmsSearch extends Cms
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
+            'pagination' => [
+                    'pageSize' => 5,
+                ],
+            'sort' => ['attributes' => ['cmsPageTitle','cmsStatus']],
         ]);
 
         if (!($this->load($params) && $this->validate())) {
@@ -53,6 +57,7 @@ class CmsSearch extends Cms
 
         $query->andFilterWhere([
             'pkCmsID' => $this->pkCmsID,
+            'cmsPageTitle' => $this->cmsPageTitle,
             'cmsDateAdded' => $this->cmsDateAdded,
             'cmsDateModified' => $this->cmsDateModified,
         ]);

@@ -2,6 +2,8 @@
 
 use yii\helpers\Html;
 use yii\grid\GridView;
+use backend\components\CommonFunctions;
+
 
 /* @var $this yii\web\View */
 /* @var $searchModel backend\models\CmsSearch */
@@ -17,7 +19,7 @@ $this->title = 'Manage CMS';
 <div class="breadcrumbs">
     <ul>
         <li><?php echo Html::a('Home',['/site/index']); ?><i class="icon-angle-right"></i></li>
-        <li><?php echo Html::a('Manage CMS',['/cms/index']); ?></li>
+        <li><?php echo Html::a('CMS',['/cms/index']); ?></li>
     </ul>
     <div class="close-bread"><a href="#"><i class="icon-remove"></i></a></div>
 </div>
@@ -39,12 +41,14 @@ $this->title = 'Manage CMS';
                 <form action="" name='cms-grid-list-form' id='cms-grid-list-form'>
                     <?= GridView::widget([
                         'dataProvider' => $dataProvider,
+                        'layout' => "{summary}{items}\n{pager}", 
                         //'filterModel' => $searchModel,
                         'columns' => [
                             [
                                 'class' => 'yii\grid\SerialColumn',
                                 'header' => 'S.No',
-                                'headerOptions' => array('style'=>'text-align:center')
+                                'headerOptions' => ['style'=>'text-align:center'],
+                                'contentOptions' => ['style'=>'text-align:center']
                             ],
                             /*[
                                 'class' => 'yii\grid\DataColumn', // can be omitted, as it is the default
@@ -54,7 +58,19 @@ $this->title = 'Manage CMS';
                                 'headerOptions' => array('style'=>'text-align:center')
                             ],*/
                             //'cmsDisplayTitle',
-                            'cmsPageTitle',
+                            [
+                                'class' => 'yii\grid\DataColumn', // can be omitted, as it is the default
+                                'value' => function ($data) {
+                                    return $data->cmsPageTitle; // $data['name'] for array data, e.g. using SqlDataProvider.
+                                },
+                                'headerOptions' => ['style'=>'text-align:center'],
+                                'header' => 'Page Title',
+                                'enableSorting' => 'enable',    
+                                //'layout' => "{summary}\n{items}\n{pager}", 
+                                //'sort' =>true
+                                //'label' => 'Title'
+                            ],
+                            //'cmsPageTitle',
                             //'cmsSlug',
                             //'cmsContent:ntext',
                             // 'cmsMetaTitle',
@@ -72,7 +88,7 @@ $this->title = 'Manage CMS';
                                 'headerOptions' => array('style'=>'text-align:center'),
                                 'contentOptions'  => array('style'=>'text-align:center')
                             ],*/
-                            /*[
+                            [
                                 'class' => 'yii\grid\DataColumn', // can be omitted, as it is the default
                                 'value' => function ($data) {
                                     return $data->cmsStatus; // $data['name'] for array data, e.g. using SqlDataProvider.
@@ -80,12 +96,31 @@ $this->title = 'Manage CMS';
                                 'label' => 'Status',
                                 'headerOptions' => array('style'=>'text-align:center'),
                                 'contentOptions'  => array('style'=>'text-align:center')
-                            ],*/
-                             'cmsStatus',
+                            ],
+                             //'cmsStatus',
+                             [
+                                 'class' => 'yii\grid\DataColumn', // can be omitted, as it is the default
+                                 'value' => function ($data) {
+                                     return $data->cmsDateModified; // $data['name'] for array data, e.g. using SqlDataProvider.
+                                 },
+                                 'headerOptions' => ['style'=>'text-align:center'],
+                                 'header' => 'Date Modified',
+                                 'enableSorting' => 'enable',    
+                                 'contentOptions'  => ['style'=>'text-align:center']
+                                 //'layout' => "{summary}\n{items}\n{pager}", 
+                                 //'sort' =>true
+                                 //'label' => 'Title'
+                             ],
                             // 'cmsDateAdded',
-                                'cmsDateModified',
-
-                            ['class' => 'yii\grid\ActionColumn'],
+                               // 'cmsDateModified',
+                             [
+                                'class' => 'yii\grid\ActionColumn',
+                                'header' => 'Action',
+                                'headerOptions' => ['style'=>'text-align:center'],
+                                'contentOptions' => ['style'=>'text-align:center'],
+                                'template' => "{view} {update}",
+                            ],
+                            //['class' => 'yii\grid\ActionColumn'],
                         ],
                     ]); ?>
                     
@@ -94,3 +129,7 @@ $this->title = 'Manage CMS';
         </div>
     </div>
 </div>
+<?php
+
+    //Yii::$app->CommonFunction->statusName('1');
+?>

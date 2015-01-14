@@ -5,10 +5,15 @@ $params = array_merge(
     
       
 );
+/*use \yii\web\Request;
+$baseUrl = str_replace('/admin', '', (new Request)->getBaseUrl());
+echo $baseUrl; die();*/
+
 require(__DIR__ . '/messages.php');
 
 return [
     'id' => 'app-backend',
+    //'homeUrl' => '/admin',
     'basePath' => dirname(__DIR__),
     'controllerNamespace' => 'backend\controllers',
     'bootstrap' => ['log'],
@@ -43,6 +48,21 @@ return [
         'errorHandler' => [
             'errorAction' => 'site/error',
         ],
+        'request' => [
+                    //'baseUrl' => '/admin',
+        ],
+        'urlManager' => [
+            'class' => 'yii\web\UrlManager',
+            'enablePrettyUrl' => true,
+            'showScriptName' => false,
+            'enablePrettyUrl' => true,
+            'rules' => array(
+                    '<controller:\w+>/<id:\d+>' => '<controller>/view',
+                    '<controller:\w+>/<action:\w+>/<id:\d+>' => '<controller>/<action>',
+                    '<controller:\w+>/<action:\w+>' => '<controller>/<action>',
+            ),
+        ],
+
     ],
     'params' => $params,
 ];

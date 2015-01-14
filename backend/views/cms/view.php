@@ -16,8 +16,8 @@ $this->title = "View CMS";
 <div class="breadcrumbs">
     <ul>
         <li><?php echo Html::a('Home',['/site/index']); ?><i class="icon-angle-right"></i></li>
-        <li><?php echo Html::a('Manage CMS',['/cms/index']); ?><i class="icon-angle-right"></i></li>
-        <li><?php echo Html::a('CMS View',['/cms/View']); ?></li>
+        <li><?php echo Html::a('CMS',['/cms/index']); ?><i class="icon-angle-right"></i></li>
+        <li><a href="#">View CMS</a></li>
     </ul>
     <div class="close-bread"><a href="#"><i class="icon-remove"></i></a></div>
 </div>
@@ -48,7 +48,6 @@ $this->title = "View CMS";
                 <?= DetailView::widget([
                         'model' => $model,
                         'attributes' => [
-                            'pkCmsID',
                             'cmsDisplayTitle',
                             'cmsPageTitle',
                             'cmsSlug',

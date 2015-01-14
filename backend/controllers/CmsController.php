@@ -49,10 +49,10 @@ class CmsController extends Controller
      */
     public function actionView($id)
     {
-        //Yii::$app->CommonFunctions->statusName($model->cmsStatus);
-        //echo "<pre>";
-        //print_r(\Yii::$app->CommonFunctions->statusName('1')); die();
-        //echo $this->cmsStatus; die();
+        $model = $this->findModel($id);
+        $model->cmsContent = strip_tags($model->cmsContent);
+        /*echo "<pre>";
+        print_r($model->cmsContent); die();*/
         return $this->render('view', [
             'model' => $this->findModel($id),
         ]);
