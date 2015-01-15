@@ -48,7 +48,7 @@ class CmsSearch extends Cms
             'pagination' => [
                     'pageSize' => 5,
                 ],
-            'sort' => ['attributes' => ['cmsPageTitle','cmsStatus']],
+            'sort' => ['attributes' => ['cmsPageTitle','cmsStatus','cmsDateModified']],
         ]);
 
         if (!($this->load($params) && $this->validate())) {

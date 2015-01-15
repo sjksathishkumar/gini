@@ -63,9 +63,11 @@ $this->title = 'Manage CMS';
                                 'value' => function ($data) {
                                     return $data->cmsPageTitle; // $data['name'] for array data, e.g. using SqlDataProvider.
                                 },
+                                'attribute' => 'cmsPageTitle',
+                                'label' => 'Page Title',
                                 'headerOptions' => ['style'=>'text-align:center'],
-                                'header' => 'Page Title',
-                                'enableSorting' => 'enable',    
+                                //'header' => 'Page Title',
+                                //'enableSorting' => 'enable',    
                                 //'layout' => "{summary}\n{items}\n{pager}", 
                                 //'sort' =>true
                                 //'label' => 'Title'
@@ -94,6 +96,7 @@ $this->title = 'Manage CMS';
                                     return $data->cmsStatus; // $data['name'] for array data, e.g. using SqlDataProvider.
                                 },
                                 'label' => 'Status',
+                                'attribute' => 'cmsStatus',
                                 'headerOptions' => array('style'=>'text-align:center'),
                                 'contentOptions'  => array('style'=>'text-align:center')
                             ],
@@ -104,7 +107,9 @@ $this->title = 'Manage CMS';
                                      return $data->cmsDateModified; // $data['name'] for array data, e.g. using SqlDataProvider.
                                  },
                                  'headerOptions' => ['style'=>'text-align:center'],
-                                 'header' => 'Date Modified',
+                                 'label' => 'Date Modified',
+                                 'attribute' => 'cmsDateModified',
+                                 //'header' => 'Date Modified',
                                  'enableSorting' => 'enable',    
                                  'contentOptions'  => ['style'=>'text-align:center']
                                  //'layout' => "{summary}\n{items}\n{pager}", 
